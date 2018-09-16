@@ -15,9 +15,9 @@ namespace EEFizzBuzz.Tests
         {
             var suit = new FizzBuzz();
 
-            var result = suit.DoFizzBuzz(3, 3);
+            var result = suit.DoFizzBuzz(6, 6);
 
-            const string expected = "izz";
+            const string expected = "fizz";
 
             Assert.That(result, Is.EqualTo(expected));
             Assert.That(result.Length, Is.EqualTo(4));
@@ -61,10 +61,10 @@ namespace EEFizzBuzz.Tests
             Assert.That(result.Trim(), Is.EqualTo(expected));
         }
 
-        [TestCase(0,3, ExpectedResult = "fizzbuzz 1 2 fizz")]
-        [TestCase(3,5, ExpectedResult = "fizz 4 buzz")]
-        [TestCase(9,15, ExpectedResult = "fizz buzz 11 fizz 13 14 fizzbuzz")]
-        [TestCase(1,20, ExpectedResult = "1 2 fizz 4 buzz fizz 7 8 fizz buzz 11 fizz 13 14 fizzbuzz 16 17 fizz 19 buzz")]
+        [TestCase(0,3, ExpectedResult = "fizzbuzz 1 2 lucky")]
+        [TestCase(3,5, ExpectedResult = "lucky 4 buzz")]
+        [TestCase(9,15, ExpectedResult = "fizz buzz 11 fizz lucky 14 fizzbuzz")]
+        [TestCase(1,20, ExpectedResult = "1 2 lucky 4 buzz fizz 7 8 fizz buzz 11 fizz lucky 14 fizzbuzz 16 17 fizz 19 buzz")]
         public string DoFizzBuzz_Returns_Expected(int lowerBound, int upperBound)
         {
             var suit = new FizzBuzz();
@@ -72,6 +72,18 @@ namespace EEFizzBuzz.Tests
             var result = suit.DoFizzBuzz(lowerBound, upperBound);
 
             return result;
+        }
+
+        [Test]
+        public void DoFizzBuzz_Returns_lucky()
+        {
+            var suit = new FizzBuzz();
+
+            var result = suit.DoFizzBuzz(3, 3);
+
+            const string expected = "lucky";
+
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }

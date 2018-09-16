@@ -6,6 +6,7 @@ namespace EEFizzBuzz
     {
         private const string Fizz = "fizz";
         private const string Buzz = "buzz";
+        private const string Lucky = "lucky";
 
         public string DoFizzBuzz(int lowerBound, int upperBound)
         {
@@ -21,6 +22,9 @@ namespace EEFizzBuzz
 
         private static string GetFizzBuzz(int number)
         {
+            if (ContainsNumberThree(number))
+                return $"{Lucky} ";
+
             if (IsDivisableBy(number, 15))
                 return $"{Fizz}{Buzz} ";
 
@@ -35,6 +39,13 @@ namespace EEFizzBuzz
         private static bool IsDivisableBy(int number, int divisibleBy)
         {
             return number % divisibleBy == 0;
+        }
+
+        private static bool ContainsNumberThree(int number)
+        {
+            var strNumber = number.ToString();
+
+            return strNumber.Contains("3");
         }
     }
 }
