@@ -17,7 +17,7 @@ namespace EEFizzBuzz.Tests
 
             var result = suit.DoFizzBuzz(3, 3);
 
-            const string expected = "izz";
+            const string expected = "fizz";
 
             Assert.That(result, Is.EqualTo(expected));
             Assert.That(result.Length, Is.EqualTo(4));
