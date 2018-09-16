@@ -1,26 +1,39 @@
 ﻿using System.Text;
+using static EEFizzBuzz.Constants;
 
 namespace EEFizzBuzz
 {
     public class FizzBuzz
     {
-        private const string Fizz = "fizz";
-        private const string Buzz = "buzz";
-        private const string Lucky = "lucky";
+        private readonly IReport _report;
 
-        public string DoFizzBuzz(int lowerBound, int upperBound)
+        public FizzBuzz(IReport report)
+        {
+            _report = report;
+        }
+
+        internal string DoFizzBuzz(int lowerBound, int upperBound)
         {
             var output = new StringBuilder();
 
             for (var i = lowerBound; i <= upperBound; i++)
             {
-                output.Append(GetFizzBuzz(i));
+                output.Append(GetCorrectString(i));
             }
 
             return output.ToString().Trim();
         }
 
-        private static string GetFizzBuzz(int number)
+        public string FizzBuzzer(int lowerBound, int upperBound)
+        {
+            var fizzBuzz = DoFizzBuzz(lowerBound, upperBound);
+
+            var report = _report.GetReport(fizzBuzz);
+
+            return fizzBuzz + " " + report.Trim();
+        }
+
+        private static string GetCorrectString(int number)
         {
             if (ContainsNumberThree(number))
                 return $"{Lucky} ";
